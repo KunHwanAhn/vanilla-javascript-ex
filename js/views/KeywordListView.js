@@ -2,10 +2,10 @@ import { delegate, qs } from "../helpers.js";
 import View from './View.js';
 
 export default class KeywordListView extends View {
-  constructor() {
-    super(qs('#keyword-list-view'));
+  constructor(element = qs('#keyword-list-view'), template = new Template()) {
+    super(element);
 
-    this.template = new Template();
+    this.template = template;
     this.bindEvents();
   }
 
@@ -32,7 +32,7 @@ class Template {
     return `<div class="empty-box">추천 검색어가 없습니다.</div>`;
   }
 
-  getList(data) {
+  getList(data = []) {
     return `
       <ul class="list">
         ${data?.map(this._getItem).join('')}
