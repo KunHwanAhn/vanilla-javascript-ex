@@ -1,3 +1,5 @@
+import { TabType } from './views/TabView.js';
+
 const tag = "[Store]";
 
 export default class Store {
@@ -8,7 +10,8 @@ export default class Store {
 
     this.storage = storage;
 
-    this.reset();
+    this.resetSearch();
+    this.resetSelectedTab();
   }
 
   search(keyword) {
@@ -16,8 +19,16 @@ export default class Store {
     this.searchResult = this.storage.productData.filter((product) => product?.name?.includes(keyword))
   }
 
-  reset() {
+  resetSearch() {
     this.searchKeyword = '';
     this.searchResult = [];
+  }
+
+  resetSelectedTab(selectedTab = TabType.KEYWORD) {
+    this.selectedTab = selectedTab;
+  }
+
+  getKeywordList() {
+    return this.storage.keywordData;
   }
 }

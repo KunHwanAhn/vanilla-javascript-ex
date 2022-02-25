@@ -19,9 +19,7 @@ export default class SearchResultView extends View {
 
 class Template {
   getEmptyMessage() {
-    return `
-      <div class="empty-box">검색결과가 없습니다.</div>
-    `;
+    return `<div class="empty-box">검색결과가 없습니다.</div>`;
   }
 
   getList(data) {
